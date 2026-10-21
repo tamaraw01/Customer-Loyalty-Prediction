@@ -34,23 +34,21 @@ Customer Loyalty Prediction/
 | **Prodgram** | Detail gramasi: berat, poin, harga perkiraan |
 | **Label** | Target variabel: MemberID dan status pembelian bulan depan |
 
-## 🚀 Cara Menjalankan
+## Run the notebook
 
-### 1. Clone Repository
+Clone the repository and work from its root directory so the notebook can resolve `DATA_DIR = 'Customer Loyalty Dataset'`.
+
 ```bash
-git clone <repository-url>
-cd "Customer Loyalty Prediction"
+git clone https://github.com/tamaraw01/Customer-Loyalty-Prediction.git
+cd Customer-Loyalty-Prediction
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m pip install notebook
+python -m notebook predictive-model-for-customer-loyalty.ipynb
 ```
 
-### 2. Install Dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Jalankan Notebook
-```bash
-jupyter notebook predictive-model-for-customer-loyalty.ipynb
-```
+The [requirements file](requirements.txt) lists the modeling libraries but does not include the Jupyter Notebook interface, which the separate install command provides. Open the [notebook](predictive-model-for-customer-loyalty.ipynb) and run its cells in order. The submission cell writes `submission.csv` in the working directory; move any existing output before rerunning it.
 
 ## 🔬 Metodologi
 
