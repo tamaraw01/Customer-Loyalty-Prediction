@@ -48,7 +48,19 @@ python -m pip install notebook
 python -m notebook predictive-model-for-customer-loyalty.ipynb
 ```
 
-The [requirements file](requirements.txt) lists the modeling libraries but does not include the Jupyter Notebook interface, which the separate install command provides. Open the [notebook](predictive-model-for-customer-loyalty.ipynb) and run its cells in order. The submission cell writes `submission.csv` in the working directory; move any existing output before rerunning it.
+The [requirements file](requirements.txt) lists the modeling libraries but does not include the Jupyter Notebook interface, which the separate install command provides. Open the [notebook](predictive-model-for-customer-loyalty.ipynb) and run its cells in order.
+
+### Generated files
+
+The notebook writes these CSV files to the working directory as the corresponding sections complete:
+
+- `submission_xgb.csv`: predictions from the first XGBoost model.
+- `submission_xgb_improved.csv`: predictions from the final XGBoost model after the validation and cross-validation section.
+- `submission.csv`: MLP ensemble predictions, averaged across folds and then across transactions for each member before applying a probability threshold of `0.5`.
+
+All three files contain `MemberID` and `next_buy`, with `next_buy` stored as a class label (`0` or `1`), not a probability. The XGBoost exports follow the member list in `sample_submission.csv`; the MLP export groups the test transactions by `MemberID` instead. Check its member coverage against the sample before submitting it.
+
+Move any existing copies of these files before rerunning their export cells, which overwrite the same filenames. The MLP tuning section also uses `keras_tuner_dir/next_buy_prediction` for its search artifacts.
 
 ## 🔬 Metodologi
 
